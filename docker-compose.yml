@@ -1,0 +1,18 @@
+version: "3.1"
+
+services:
+
+  zipkin:
+    image: openzipkin/zipkin:2.23
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_HOST=192.168.31.64
+      - MYSQL_TCP_PORT=3306
+      - MYSQL_DB=zipkin
+      - MYSQL_USER=root
+      - MYSQL_PASS=123456
+    volumes:
+      - .:/application
+    ports:
+      - 9411:9411
+    restart: always
